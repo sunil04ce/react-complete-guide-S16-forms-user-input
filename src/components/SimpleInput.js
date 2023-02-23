@@ -5,7 +5,7 @@ const SimpleInput = (props) => {
     value: enteredName,
     isValid: enteredNameIsValid,
     hasError: nameInputHasError,
-    valueChangeHandler: nameChangedHandler,
+    inputChangeHandler: nameChangedHandler,
     inputBlurHandler: nameBlurHandler,
     reset: resetNameInput,
   } = useInput((value) => value !== "");
@@ -17,7 +17,9 @@ const SimpleInput = (props) => {
     inputChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
     reset: resetEmailInput,
-  } = useInput((value) => value.includes("@"));
+  } = useInput(
+    (value) => value.trim() !== "" && value.includes("@") && value.includes(".")
+  );
 
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [enteredEmailIsTouched, setEnteredEmailIsTouched] = useState(false);
